@@ -6,6 +6,7 @@ import {NOT_FOUND} from "./user.errors";
 
 @Injectable()
 export class UsersService {
+<<<<<<< HEAD
     constructor(@InjectModel(UserEntity) private readonly userModel) {
     }
     async create({ firstName, lastName}: CreateUserDto): Promise<void> {
@@ -30,5 +31,8 @@ export class UsersService {
             throw new Error(NOT_FOUND);
         }
         return findUser.destroy();
+=======
+    constructor() {
+>>>>>>> 678ffbd (some)
     }
 }
