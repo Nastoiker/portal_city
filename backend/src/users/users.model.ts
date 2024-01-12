@@ -29,5 +29,5 @@ export class User extends Model {
   roles?: number;
 
   @HasMany(() => Post)
-  shoppingCart?: Post[];
+  posts?: Post[];
 }

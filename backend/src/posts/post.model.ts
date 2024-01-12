@@ -10,7 +10,10 @@ import { User } from 'src/users/users.model';
 @Table({ timestamps: true })
 export class Post extends Model {
   @Column({
+    type: DataType.INTEGER,
+    unique: true,
     primaryKey: true,
+    autoIncrement: true,
   })
   id: number;
   @ForeignKey(() => User)

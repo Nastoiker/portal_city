@@ -7,10 +7,15 @@ import { User } from './users.model';
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User) private readonly userModel) {}
-  async create({ firstName, lastName }: CreateUserDto): Promise<void> {
+  async create(dto: CreateUserDto): Promise<User> {
+    const { name, surname, username, password, roles, email } = dto;
     return this.userModel.create({
-      firstName,
-      lastName,
+      password,
+      email,
+      username,
+      roles,
+      name,
+      surname,
     });
   }
   async findAll(): Promise<User[]> {
@@ -22,6 +27,9 @@ export class UsersService {
         id,
       },
     });
+  }
+  async findOneOptions(where: any): Promise<User> {
+    return this.userModel.findOne();
   }
   async remove(id: string): Promise<void> {
     const findUser = await this.findOne(id);
