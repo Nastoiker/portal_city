@@ -58,19 +58,20 @@ const router = createBrowserRouter([
           </Suspense>
         ),
       },
+     
+    ],
+  },
+  {
+    path: "/auth",
+    element: <AuthLayout />,
+    children: [
       {
-        path: "/auth",
-        element: <AuthLayout />,
-        children: [
-          {
-            path: "login",
-            element: <Login />,
-          },
-          {
-            path: "register",
-            element: <Register />,
-          },
-        ],
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "register",
+        element: <Register />,
       },
     ],
   },
