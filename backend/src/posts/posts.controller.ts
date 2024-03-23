@@ -1,6 +1,7 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   HttpStatus,
   NotFoundException,
@@ -62,6 +63,11 @@ export class PostsController {
   @Get(':id')
   findOne(@Param('id') id: number) {
     return this.postService.findOne(id);
+  }
+  @Delete(':id')
+  @UseGuards(JwtAuthGuard)
+  removeOne(@Param('id') id: number) {
+    return this.postService.remove(id);
   }
   @Get()
   getPosts() {

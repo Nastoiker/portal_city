@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { path } from 'app-root-path';
 import { writeFile } from 'fs-extra';
-import path from 'path';
 import { Op } from 'sequelize';
 import { CreatePostDto } from './dto/create-post.dto';
 import { UpdatePostDto } from './dto/update-post.dto';
@@ -54,12 +54,12 @@ export class PostsService {
   ): Promise<Post> {
     const extension = file.originalname.split('.');
     const filePath =
-      path +
-      `/uploads/${createPostDto?.userId}/posts/` +
+      `/uploads/posts/` +
+      createPostDto.title +
+      new Date().getTime() +
       '.' +
-      file.filename +
       extension[extension.length - 1];
-    await writeFile(filePath, file.buffer);
+    await writeFile(path + filePath, file.buffer);
     const product = await this.postRep.create({
       title: createPostDto.title,
       userId: createPostDto?.userId,
