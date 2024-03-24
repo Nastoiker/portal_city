@@ -41,12 +41,14 @@ export function Register() {
     try {
       setError(true);
       const { name, email, password } = data;
-      await api.post("/user/register", {
+      await api.post("/auth/register", {
         email,
         password,
         name,
+        username: name,
+        surname: "",
       });
-      navigate("/login");
+      navigate("/auth/login");
     } catch (e) {
       setError(true);
     }

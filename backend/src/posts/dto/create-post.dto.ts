@@ -15,5 +15,5 @@ export class CreatePostDto {
   isPublished: boolean;
   @IsOptional()
   @IsString()
-  picture?: string;
+  pictureBefore?: string;
 }

@@ -44,9 +44,8 @@ export const UpdateAvatarProfile = ({
       >
         {onDrag ? (
           <div className=" scale-75 bg-sky-700 shadow-xl  bg-blue transition-all duration-300 p-5">
-            {" "}
             <div className="mx-auto">
-              <img className={"w-48 h-48"} src={selectedFile} alt="" />
+              <img style={{ width: "600px" }} src={selectedFile} alt="" />
             </div>
           </div>
         ) : (

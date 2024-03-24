@@ -3,9 +3,11 @@ export interface IPost {
   title: string;
   userId: number;
   description: string;
+  rejection: string;
   isResolved: boolean;
   isPublished: boolean;
-  picture: string;
+  pictureBefore?: string;
   updatedAt: string;
+  pictureAfter?: string;
   createdAt: string;
 }

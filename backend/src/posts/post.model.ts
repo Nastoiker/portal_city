@@ -22,10 +22,14 @@ export class Post extends Model {
   title: string;
   @Column
   description: string;
+  @Column
+  rejection: string;
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   isResolved: boolean;
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   isPublished: boolean;
   @Column
-  picture: string;
+  pictureBefore: string;
+  @Column
+  pictureAfter: string;
 }

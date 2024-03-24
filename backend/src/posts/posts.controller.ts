@@ -57,8 +57,13 @@ export class PostsController {
   }
   @Patch(':id')
   @UseGuards(JwtAuthGuard)
-  update(@Param('id') id: number, @Body() updateProductDto: UpdatePostDto) {
-    return this.postService.update(id, updateProductDto);
+  @UseInterceptors(FileInterceptor('beforeAfter'))
+  update(
+    @Param('id') id: number,
+    @Body() updateProductDto: UpdatePostDto,
+    @UploadedFile() pictureAfter: Express.Multer.File,
+  ) {
+    return this.postService.update(id, updateProductDto, pictureAfter);
   }
   @Get(':id')
   findOne(@Param('id') id: number) {

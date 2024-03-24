@@ -66,17 +66,32 @@ export class PostsService {
       description: createPostDto.description,
       isResolved: createPostDto.isResolved ?? false,
       isPublished: createPostDto.isPublished ?? false,
-      picture: filePath,
+      pictureBefore: filePath,
     });
     return product;
   }
 
-  async update(id: number, updateProductDto: UpdatePostDto): Promise<Post> {
+  async update(
+    id: number,
+    updateProductDto: UpdatePostDto,
+    file: Express.Multer.File,
+  ): Promise<Post> {
+    const extension = file.originalname.split('.');
+    const filePath =
+      `/uploads/posts/` +
+      updateProductDto.title +
+      new Date().getTime() +
+      '.' +
+      extension[extension.length - 1];
+    await writeFile(path + filePath, file.buffer);
     await this.postRep.findByPk(id);
     const product = await this.findOne(id);
-    await this.postRep.update(updateProductDto, {
-      where: { id: id },
-    });
+    await this.postRep.update(
+      { ...updateProductDto, pictureAfter: filePath },
+      {
+        where: { id: id },
+      },
+    );
     return product;
   }
 

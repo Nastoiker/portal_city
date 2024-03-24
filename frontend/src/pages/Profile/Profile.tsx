@@ -11,10 +11,10 @@ export const Profile = () => {
   });
   return (
     <div>
-      Профиль
-      <h2>{data?.username}</h2>
-      <h2>{data?.name}</h2>
-      <p>{data?.email}</p>
+      <h1>Профиль</h1>
+      <h2>Логин: {data?.username}</h2>
+      <h2>Имя: {data?.name}</h2>
+      <h2>email: {data?.email}</h2>
     </div>
   );
 };

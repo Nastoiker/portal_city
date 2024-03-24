@@ -18,5 +18,5 @@ instance.interceptors.request.use((config) => {
 
   return config;
 });
-
+export const dev = "dev";
 export default instance;
