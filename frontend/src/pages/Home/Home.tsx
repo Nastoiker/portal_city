@@ -14,7 +14,12 @@ export const Home = () => {
     <Wrapper>
       <Container
         size="3"
-        style={{ padding: "20px", maxWidth: "960px", margin: "auto" }}
+        style={{
+          padding: "20px",
+          maxWidth: "960px",
+          margin: "auto",
+          paddingTop: "200px",
+        }}
       >
         <h1>Добро пожаловать на официальный портал нашего города</h1>
         <p>

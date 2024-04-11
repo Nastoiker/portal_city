@@ -76,23 +76,35 @@ export class PostsService {
     updateProductDto: UpdatePostDto,
     file: Express.Multer.File,
   ): Promise<Post> {
-    const extension = file.originalname.split('.');
-    const filePath =
-      `/uploads/posts/` +
-      updateProductDto.title +
-      new Date().getTime() +
-      '.' +
-      extension[extension.length - 1];
-    await writeFile(path + filePath, file.buffer);
-    await this.postRep.findByPk(id);
-    const product = await this.findOne(id);
-    await this.postRep.update(
-      { ...updateProductDto, pictureAfter: filePath },
-      {
-        where: { id: id },
-      },
-    );
-    return product;
+    if (file) {
+      const extension = file.originalname.split('.');
+      const filePath =
+        `/uploads/posts/` +
+        updateProductDto.title +
+        new Date().getTime() +
+        '.' +
+        extension[extension.length - 1];
+      await writeFile(path + filePath, file.buffer);
+      await this.postRep.findByPk(id);
+      const product = await this.findOne(id);
+      await product.update(
+        { ...updateProductDto, pictureAfter: filePath },
+        {
+          where: { id: id },
+        },
+      );
+      return product;
+    } else {
+      await this.postRep.findByPk(id);
+      const product = await this.findOne(id);
+      await product.update(
+        { ...updateProductDto },
+        {
+          where: { id: id },
+        },
+      );
+      return product;
+    }
   }
 
   async remove(id: number): Promise<Post> {

@@ -103,7 +103,7 @@ export function NavBar() {
       <NavBarToggle onClick={toggleNavBar}>
         <Hamburger />
       </NavBarToggle>
-      <Logo href="">Портал</Logo>
+      <Logo href="/home">Портал</Logo>
       <MainNav $display={displayNav}>
         {data ? (
           <>

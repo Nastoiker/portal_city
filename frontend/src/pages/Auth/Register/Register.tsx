@@ -63,7 +63,11 @@ export function Register() {
           <Input
             id="email"
             {...register("email", {
-              required: { value: true, message: "Заполните login" },
+              required: { value: true, message: "Заполните email" },
+              pattern: {
+                value: /\S+@\S+\.\S+/,
+                message: "Введите  email",
+              },
             })}
             name="email"
             placeholder="Email"
@@ -73,7 +77,7 @@ export function Register() {
           <label htmlFor="password">Ваш пароль</label>
           <Input
             {...register("password", {
-              required: { value: true, message: "Заполните login" },
+              required: { value: true, message: "Заполните пароль" },
             })}
             id="password"
             name="password"

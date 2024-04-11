@@ -1,8 +1,7 @@
-import { Text } from "@radix-ui/themes";
+import { Button, Text } from "@radix-ui/themes";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import styled from "styled-components";
-import Button from "../../components/Button/Button";
 import { Input } from "../../components/Input/Input";
 import { UpdateAvatarProfile } from "../../components/UploadImage/UploadImage";
 import api from "../../helpers/axios";

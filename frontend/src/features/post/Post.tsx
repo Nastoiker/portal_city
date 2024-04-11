@@ -10,7 +10,8 @@ const PostWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  border: 1px solid green;
+  border: 5px solid green;
+  border-radius: 25px;
 `;
 const Title = styled.h2`
   font-size: 16px;
@@ -57,6 +58,7 @@ export const Post = ({
       )}
       <WrapperBottom>
         <ActionsPost onDelete={() => deletePost(id)} />
+        <Text>Статус: </Text>
         <Text>{isResolved ? "Разрешено" : "Не разрешено"}</Text>
         {rejection && (
           <Box>

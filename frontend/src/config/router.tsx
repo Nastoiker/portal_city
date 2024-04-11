@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Outlet, createBrowserRouter } from "react-router-dom";
+import { Footer } from "../components/Footer/Footer";
 import { NavBar } from "../components/Navbar/Navbar";
 import { CreatePostForm } from "../features/post/CreatePost";
 import { RequireAuth } from "../helpers/RequireAuth";
@@ -19,6 +20,7 @@ const router = createBrowserRouter([
       <>
         <NavBar />
         <Outlet />
+        <Footer />
       </>
     ),
     errorElement: <>Ошибка</>,

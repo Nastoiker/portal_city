@@ -22,7 +22,14 @@ export const CheckingPost = ({ ...rest }: IPost) => {
   return (
     <div>
       <Post {...rest} />
-      <Box style={{ background: "green", width: "auto" }}>
+      <Box
+        style={{
+          background: "green",
+          width: "auto",
+          margin: "20px",
+          borderRadius: "25px",
+        }}
+      >
         {!rest.rejection && (
           <Box maxWidth="300px">
             <TextField.Root
